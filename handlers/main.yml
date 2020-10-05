@@ -1,1 +1,21 @@
 ---
+- name: Enable apt-autoremove service
+  systemd:
+    name: apt-autoremove.service
+    enabled: true
+    daemon_reload: true
+  when: not (
+    molecule_docker_environment is defined
+    and molecule_docker_environment | bool
+    )
+
+- name: Start apt-autoremove timer
+  systemd:
+    name: apt-autoremove.timer
+    enabled: true
+    state: started
+    daemon_reload: true
+  when: not (
+    molecule_docker_environment is defined
+    and molecule_docker_environment | bool
+    )

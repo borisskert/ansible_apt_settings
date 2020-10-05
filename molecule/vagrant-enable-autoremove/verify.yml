@@ -1,0 +1,58 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Should create autoremove service
+      slurp:
+        src: /etc/systemd/system/apt-autoremove.service
+      register: apt_autoremove_service_file
+      failed_when:
+        not apt_autoremove_service_file.content == ( expected_content | b64encode )
+      vars:
+        expected_content: |
+          [Unit]
+          Description=daily apt autoremove activities
+          Documentation=man:apt(8)
+          ConditionACPower=true
+
+          [Service]
+          Type=oneshot
+          ExecStart=/usr/bin/apt-get autoremove -y
+          KillMode=process
+          TimeoutStopSec=900
+
+    - name: Should create autoremove service
+      slurp:
+        src: /etc/systemd/system/apt-autoremove.timer
+      register: apt_autoremove_service_timer_file
+      failed_when:
+        not apt_autoremove_service_timer_file.content == ( expected_content | b64encode )
+      vars:
+        expected_content: |
+          [Unit]
+          Description=Daily apt autoremove activities
+
+          [Timer]
+          OnCalendar=*-*-* 22:00
+          Persistent=true
+
+          [Install]
+          WantedBy=timers.target
+
+    - name: Should enable autoremove service
+      service:
+        name: apt-autoremove.service
+        enabled: true
+      register: apt_autoremove_service
+      failed_when: apt_autoremove_service.failed
+        or apt_autoremove_service.changed
+
+    - name: Should enable autoremove timer
+      service:
+        name: apt-autoremove.timer
+        enabled: true
+      register: apt_autoremove_timer
+      failed_when: apt_autoremove_timer.failed
+        or apt_autoremove_timer.changed

@@ -2,6 +2,14 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: Example assertion
-      assert:
-        that: true
+    - name: Should NOT create autoremove service
+      stat:
+        path: /etc/systemd/system/apt-autoremove.service
+      register: apt_autoremove_service_file
+      failed_when: apt_autoremove_service_file.stat.exists
+
+    - name: Should NOT create autoremove service timer
+      stat:
+        path: /etc/systemd/system/apt-autoremove.timer
+      register: apt_autoremove_service_timer_file
+      failed_when: apt_autoremove_service_timer_file.stat.exists

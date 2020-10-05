@@ -1,0 +1,10 @@
+[Unit]
+Description=daily apt autoremove activities
+Documentation=man:apt(8)
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/apt-get autoremove -y
+KillMode=process
+TimeoutStopSec=900

@@ -1,0 +1,41 @@
+---
+dependency:
+  name: galaxy
+
+lint: |
+  set -e
+  yamllint . --strict
+  ansible-lint
+
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+
+platforms:
+  #  - name: ansible-nginx-xenial
+  #    box: ubuntu/xenial64
+  #    instance_raw_config_args:
+  #      - 'vm.network "private_network", ip: "192.168.33.67"'
+  #  - name: ansible-nginx-bionic
+  #    box: ubuntu/bionic64
+  #  - name: ansible-nginx-focal
+  #    box: ubuntu/focal64
+  #  - name: ansible-nginx-stretch
+  #    box: debian/stretch64
+  #    groups:
+  #      - debian
+  - name: ansible-apt-settings-buster
+    box: debian/buster64
+    groups:
+      - debian
+
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      debian:
+        ansible_python_interpreter: /usr/bin/python3
+
+verifier:
+  name: ansible

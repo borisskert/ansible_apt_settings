@@ -11,7 +11,7 @@ driver:
   name: docker
 
 platforms:
-  - name: ansible-apt-settings-focal
+  - name: ansible-vsftpd-focal
     image: docker.io/borisskert/python3:focal
     pull: true
     pre_build_image: true

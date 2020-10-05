@@ -1,1 +1,4 @@
 ---
+- name: Setup autoremove service
+  include: install-systemd-timer.yml
+  when: apt_settings_autoremove_enabled | bool

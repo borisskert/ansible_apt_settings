@@ -5,3 +5,4 @@
 
   roles:
     - role: ansible_apt_settings
+      apt_settings_autoremove_enabled: true
