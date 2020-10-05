@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible_apt_settings"
+      include_role:
+        name: "ansible_apt_settings"
