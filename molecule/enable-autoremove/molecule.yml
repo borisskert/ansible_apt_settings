@@ -11,7 +11,7 @@ driver:
   name: docker
 
 platforms:
-  - name: ansible-vsftpd-focal
+  - name: ansible-aptsettings-focal
     image: docker.io/borisskert/python3:focal
     pull: true
     pre_build_image: true
@@ -19,6 +19,40 @@ platforms:
       - '/var/run/docker.sock:/var/run/docker.sock'
     groups:
       - docker
+  - name: ansible-aptsettings-bionic
+    image: docker.io/borisskert/python3:bionic
+    pull: true
+    pre_build_image: true
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    groups:
+      - docker
+  - name: ansible-aptsettings-xenial
+    image: docker.io/borisskert/python3:xenial
+    pull: true
+    pre_build_image: true
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    groups:
+      - docker
+  - name: ansible-aptsettings-buster
+    image: docker.io/borisskert/python3:buster
+    pull: true
+    pre_build_image: true
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    groups:
+      - docker
+      - debian
+  - name: ansible-aptsettings-stretch
+    image: docker.io/borisskert/python3:stretch
+    pull: true
+    pre_build_image: true
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    groups:
+      - docker
+      - debian
 
 provisioner:
   name: ansible

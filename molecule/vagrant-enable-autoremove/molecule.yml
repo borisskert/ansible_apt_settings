@@ -10,23 +10,21 @@ lint: |
 driver:
   name: vagrant
   provider:
-    name: virtualbox
+    name: libvirt
 
 platforms:
-  #  - name: ansible-nginx-xenial
-  #    box: ubuntu/xenial64
-  #    instance_raw_config_args:
-  #      - 'vm.network "private_network", ip: "192.168.33.67"'
-  #  - name: ansible-nginx-bionic
-  #    box: ubuntu/bionic64
-  #  - name: ansible-nginx-focal
-  #    box: ubuntu/focal64
-  #  - name: ansible-nginx-stretch
-  #    box: debian/stretch64
-  #    groups:
-  #      - debian
-  - name: ansible-apt-settings-buster
-    box: debian/buster64
+  - name: aptsettings-xenial
+    box: generic/ubuntu1604
+  - name: aptsettings-bionic
+    box: generic/ubuntu1804
+  - name: aptsettings-focal
+    box: generic/ubuntu2004
+  - name: aptsettings-stretch
+    box: generic/debian9
+    groups:
+      - debian
+  - name: aptsettings-buster
+    box: generic/debian10
     groups:
       - debian
 
