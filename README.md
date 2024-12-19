@@ -4,11 +4,13 @@ Setup apt settings, services and timers.
 
 ## Supported operating systems
 
-* Ubuntu 16.04
-* Ubuntu 18.04
-* Ubuntu 20.04
-* Debian 9
-* Debian 10
+* Ubuntu
+  * 24.04
+  * 22.04
+  * 20.04
+* Debian
+  * 12
+  * 11
 
 ## System requirements
 
@@ -20,9 +22,9 @@ Setup apt settings, services and timers.
 
 ## Role parameters
 
-| Variable      | Type | Mandatory? | Default | Description           |
-|---------------|------|------------|---------|-----------------------|
-| apt_settings_autoremove_enabled | boolean | no | false | If true setup the apt-autoremove service and timer |
+| Variable                        | Type    | Mandatory? | Default | Description                                        |
+|---------------------------------|---------|------------|---------|----------------------------------------------------|
+| apt_settings_autoremove_enabled | boolean | no         | false   | If true setup the apt-autoremove service and timer |
 
 ## Example Playbook
 
@@ -68,7 +70,7 @@ molecule test --scenario-name vagrant-enable-autoremove --parallel
 ```
 
 I recommend to use [pyenv](https://github.com/pyenv/pyenv) for local testing.
-Within the Github Actions pipeline I use [my own molecule Docker image](https://github.com/borisskert/docker-molecule).
+Within the GitHub Actions pipeline I use [my own molecule action](https://github.com/borisskert/molecule-action).
 
 ## License
 

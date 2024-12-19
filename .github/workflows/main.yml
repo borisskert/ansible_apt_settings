@@ -14,16 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: ${{ github.repository }}
 
       - name: lint and test (scenario 'default') with molecule
-        uses: borisskert/molecule-action@v20.10.28
+        uses: borisskert/molecule-action@v24.12.9
         with:
-          arguments: test --parallel
+          arguments: test
 
       - name: lint and test (scenario 'enable-autoremove') with molecule
-        uses: borisskert/molecule-action@v20.10.28
+        uses: borisskert/molecule-action@v24.12.9
         with:
-          arguments: test --scenario-name enable-autoremove --parallel
+          arguments: test --scenario-name enable-autoremove

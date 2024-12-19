@@ -1,6 +1,6 @@
 ---
 - name: Setup autoremove service
-  include: install-systemd-timer.yml
+  include_tasks: install-systemd-timer.yml
   when: apt_settings_autoremove_enabled | bool
 
 - name: Start systemd-managed services and timers
