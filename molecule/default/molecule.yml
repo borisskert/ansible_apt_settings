@@ -11,6 +11,22 @@ driver:
   name: docker
 
 platforms:
+  - name: ansible-aptsettings-noble
+    image: docker.io/borisskert/python3:noble
+    pull: true
+    pre_build_image: true
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    groups:
+      - docker
+  - name: ansible-aptsettings-jammy
+    image: docker.io/borisskert/python3:jammy
+    pull: true
+    pre_build_image: true
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    groups:
+      - docker
   - name: ansible-aptsettings-focal
     image: docker.io/borisskert/python3:focal
     pull: true
@@ -19,24 +35,9 @@ platforms:
       - '/var/run/docker.sock:/var/run/docker.sock'
     groups:
       - docker
-  - name: ansible-aptsettings-bionic
-    image: docker.io/borisskert/python3:bionic
-    pull: true
-    pre_build_image: true
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-    groups:
-      - docker
-  - name: ansible-aptsettings-xenial
-    image: docker.io/borisskert/python3:xenial
-    pull: true
-    pre_build_image: true
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-    groups:
-      - docker
-  - name: ansible-aptsettings-buster
-    image: docker.io/borisskert/python3:buster
+
+  - name: ansible-aptsettings-bookworm
+    image: docker.io/borisskert/python3:bookworm
     pull: true
     pre_build_image: true
     volumes:
@@ -44,8 +45,8 @@ platforms:
     groups:
       - docker
       - debian
-  - name: ansible-aptsettings-stretch
-    image: docker.io/borisskert/python3:stretch
+  - name: ansible-aptsettings-bullseye
+    image: docker.io/borisskert/python3:bullseye
     pull: true
     pre_build_image: true
     volumes:

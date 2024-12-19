@@ -13,18 +13,18 @@ driver:
     name: libvirt
 
 platforms:
-  - name: aptsettings-xenial
-    box: generic/ubuntu1604
-  - name: aptsettings-bionic
-    box: generic/ubuntu1804
-  - name: aptsettings-focal
-    box: generic/ubuntu2004
-  - name: aptsettings-stretch
-    box: generic/debian9
+  - name: ansible-aptsettings-noble
+    box: cloud-image/ubuntu-24.04
+  - name: ansible-aptsettings-jammy
+    box: cloud-image/ubuntu-22.04
+  - name: ansible-aptsettings-focal
+    box: cloud-image/ubuntu-20.04
+  - name: ansible-aptsettings-bookworm
+    box: cloud-image/debian-12
     groups:
       - debian
-  - name: aptsettings-buster
-    box: generic/debian10
+  - name: ansible-aptsettings-bullseye
+    box: cloud-image/debian-11
     groups:
       - debian
 
