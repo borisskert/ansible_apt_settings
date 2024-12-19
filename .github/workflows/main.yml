@@ -21,9 +21,9 @@ jobs:
       - name: lint and test (scenario 'default') with molecule
         uses: borisskert/molecule-action@v24.12.9
         with:
-          arguments: test --parallel
+          arguments: test
 
       - name: lint and test (scenario 'enable-autoremove') with molecule
         uses: borisskert/molecule-action@v24.12.9
         with:
-          arguments: test --scenario-name enable-autoremove --parallel
+          arguments: test --scenario-name enable-autoremove
